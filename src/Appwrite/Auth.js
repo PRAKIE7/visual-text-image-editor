@@ -21,21 +21,21 @@ export class AuthService{
                 return userAccount;
             }
         } catch (error) {
-            throw error
+            console.log("Appwrite serive :: createAccount :: error", error);
         }
     }
     async loginAccount({email, password}){
         try {
             return await this.account.createEmailPasswordSession(email, password)
         } catch (error) {
-            throw error
+            console.log("Appwrite serive :: loginAccount :: error", error);
         }
     }
     async checkCurrAccount(){
         try {
             return await this.account.get();
         } catch (error) {
-            throw error
+            console.log("Appwrite serive :: checkCurrAccount :: error", error);
         }
     }
 
@@ -43,7 +43,7 @@ export class AuthService{
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            throw error
+            console.log("Appwrite serive :: logoutAccount :: error", error);
         }
     }
 }
