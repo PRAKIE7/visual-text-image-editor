@@ -28,7 +28,7 @@ function App() {
           <div>
             <Header />
             <main>
-              {/* <Outlet/> */}
+              TODO: {/* <Outlet/> */}
             </main>
             <Footer />
           </div>
