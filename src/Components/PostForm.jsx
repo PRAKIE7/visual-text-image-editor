@@ -2,8 +2,8 @@ import React from 'react'
 import dbService from '../Appwrite/Database'
 import { Button, Input, Selectfield, RTE } from './Imports'
 import { useNavigate } from 'react-router-dom'
-import { UseSelector, useSelector } from 'react-redux'
-import useForm from 'react-hook-form'
+import { useSelector } from 'react-redux'
+import {useForm} from 'react-hook-form'
 import { useCallback } from 'react'
 
 

@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const authStatus = useSelector((state) => state.auth.Status)
-
+function Header() {
+  const authStatus = useSelector((state) => state.auth.Status)
+const navigate = useNavigate()
 const navItems = [
   {
     name: "Home",
@@ -33,7 +34,6 @@ const navItems = [
     Status: authStatus,
   },
 ]
-function Header() {
   return (
     <div>
       <header className=' py-3 shadow bg-gray-500'>
