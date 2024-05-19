@@ -15,7 +15,6 @@ function Login() {
     const {
         register,
         handleSubmit,
-        formState: { errors }
     } = useForm({
         defaultValues: {
             Email: "",
@@ -28,7 +27,7 @@ function Login() {
         try {
             const session = await authService.loginAccount(data)
             if (session) {
-                const userData = await authService.checkCurrAccount
+                const userData = await authService.checkCurrAccount()
                 if (userData) dispatch(authLogin(userData));
                 navigate("/");
             }

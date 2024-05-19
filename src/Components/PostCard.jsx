@@ -1,5 +1,5 @@
 import React from 'react'
-import appwriteService from '../Appwrite/Database'
+import dbService from '../Appwrite/Database'
 import { Link } from 'react-router-dom'
 
 function PostCard({$id, Title, Image}) {
@@ -8,7 +8,7 @@ function PostCard({$id, Title, Image}) {
       <Link to={`/post/${$id}`}>
       <div className='w-full bg-gray-100 rounded-xl p-4'>
             <div className='w-full justify-center mb-4'>
-                <img src={appwriteService.filePreview(Image)} alt={Title}
+                <img src={dbService.filePreview(Image)} alt={Title}
                 className='rounded-xl' />
 
             </div>

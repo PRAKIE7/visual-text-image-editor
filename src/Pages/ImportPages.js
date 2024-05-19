@@ -13,5 +13,5 @@ export{
     AddPostPg,
     AllPostPg,
     PostPermit,
-    EditPostPg
+    EditPostPg,
 }

@@ -5,11 +5,13 @@ import authService from './Appwrite/Auth';
 import { login, logout } from './Features/AuthSlice'
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import { Outlet } from 'react-router-dom';
 // import Store from './Store/Store';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch()
+
   useEffect(() => {
     authService.checkCurrAccount()
       .then((userData) => {
@@ -19,20 +21,20 @@ function App() {
           dispatch(logout)
         }
       })
-      .finally(setLoading(false));
-  }, [])
+      .finally(() => setLoading(false));
+  }, [loading, setLoading])
 
-  return loading ? 
-      <div>Loading Please Wait in the Lobby!!!</div> :
-        <div>
-          <div>
-            <Header />
-            <main>
-              TODO: {/* <Outlet/> */}
-            </main>
-            <Footer />
-          </div>
-        </div>
+  return  !loading ?
+    (<div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+      <div className='w-full block'>
+        <Header />
+        <main>
+          TODO: <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>) : <div>Loading Please Wait!!!</div>
+
 }
 
 export default App

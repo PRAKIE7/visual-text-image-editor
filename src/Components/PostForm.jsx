@@ -26,11 +26,11 @@ function PostForm({ post }) {
     });
 
     const navigate = useNavigate();
-    const { userData } = useSelector(state => state.user.userData)
+    const userData = useSelector((state) => state.auth.userData)
 
     const submitForm = async (data) => {
         if (post) {
-            const file = data.Image[0] ? dbService.uploadFile(data.Image[0]) : null;
+            const file = data.Image[0] ? await dbService.uploadFile(data.Image[0]) : null;
 
             if (file) {
                 dbService.deleteFile(post.Image)
@@ -38,10 +38,11 @@ function PostForm({ post }) {
             const updtPost = await dbService.updatePost(post.$id, {
                 ...data,
                 Image: file ? file.$id : undefined,
-                if(updtPost) {
-                    navigate(`/post/${updtPost.$id}`)
-                }
             })
+
+            if(updtPost) {
+                navigate(`/post/${updtPost.$id}`)
+            }
         } else {
             const file = await dbService.uploadFile(data.Image[0]);
             if (file) {
@@ -111,13 +112,13 @@ function PostForm({ post }) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            src={dbService.getFilePreview(post.featuredImage)}
                             alt={post.title}
                             className="rounded-lg"
                         />
                     </div>
                 )}
-                <Select
+                <Selectfield
                     options={["active", "inactive"]}
                     label="Status"
                     className="mb-4"

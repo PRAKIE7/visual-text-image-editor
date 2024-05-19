@@ -13,14 +13,7 @@ function Signup() {
     const {
         register,
         handleSubmit,
-        formState: { errors }
-    } = useForm({
-        defaultValues: {
-            Name: "",
-            Email: "",
-            Password: "",
-        }
-    });
+    } = useForm();
 
     const signupMethod = async (data) => {
         setError("")

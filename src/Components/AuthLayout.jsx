@@ -8,14 +8,15 @@ function Protected({children, authenticate= true}) {
     const authStatus = useSelector(state=> state.auth.Status)
 
     useEffect(()=>{
-        if(authenticate !== authStatus){
+        if(authenticate && authStatus !== authenticate){
             navigate("/login")
-        } else if(authenticate == authStatus){
+        } else if(!authenticate && authStatus !== authenticate){
             navigate("/")
         }
         setLoader(false)
     }, [authStatus, navigate, authenticate])
-  return loader ? <div>Loading...</div> : {children};
+
+  return loader ? <div>Loading...</div> : <>{children}</>
 }
 
 export default Protected

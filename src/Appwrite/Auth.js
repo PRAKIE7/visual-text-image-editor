@@ -4,6 +4,7 @@ import Config from "../Config/Config";
 export class AuthService{
     client= new Client();
     account;
+
     constructor(){
         this.client
             .setEndpoint(Config.appwriteEndpoint)
@@ -35,8 +36,10 @@ export class AuthService{
         try {
             return await this.account.get();
         } catch (error) {
-            console.log("Appwrite serive :: checkCurrAccount :: error", error);
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
+
+        return null;
     }
 
     async logoutAccount(){
