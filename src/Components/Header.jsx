@@ -25,7 +25,7 @@ const navItems = [
   },
   {
     name: "All Posts",
-    Slug: '/posts',
+    Slug: '/all-posts',
     Status: authStatus,
   },
   {

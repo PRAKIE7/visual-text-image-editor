@@ -38,27 +38,28 @@ function PostForm({ post }) {
             const updtPost = await dbService.updatePost(post.$id, {
                 ...data,
                 Image: file ? file.$id : undefined,
-            })
+            });
 
             if(updtPost) {
                 navigate(`/post/${updtPost.$id}`)
             }
         } else {
             const file = await dbService.uploadFile(data.Image[0]);
+
             if (file) {
-                const fileID = file.$id
-                data.Image = fileID
+                const fileID = file.$id;
+                data.Image = fileID;
                 const dbPost = await dbService.createPost({
                     ...data,
-                    UserID: userData.$id,
+                    UserID: userData.$id
                 })
                 if (dbPost) {
-                    navigate(`/post/${dbPost.$id}`)
+                    navigate(`/post/${dbPost.$id}`);
                 }
             }
         }
 
-    }
+    };
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
